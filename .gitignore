@@ -1,0 +1,20 @@
+# Ignore bin and obj everywhere in the repo
+**/bin/
+**/obj/
+
+# VS/IDE stuff
+.vs/
+*.user
+*.suo
+*.vscode/
+
+# Logs
+*.log
+
+# Config
+appsettings.Development.json
+secrets.json
+
+# OS files
+.DS_Store
+Thumbs.db
