@@ -7,8 +7,8 @@ namespace Chat.API.Hubs
 {
     public class ChatHub : Hub
     {
-        private readonly ChatDbContext _context;
-        public ChatHub(ChatDbContext context)
+        private readonly ApplicationDbContext _context;
+        public ChatHub(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -19,9 +19,9 @@ namespace Chat.API.Hubs
 
             var chatMessage = new ChatMessage
             {
-                UserId = userId ?? "0" ,
-                User = userName ?? "Anonymous",
-                Message = message,
+                AuthorId = Guid.TryParse(userId, out var parsedId) ? parsedId : Guid.Empty,
+                Author = userName ?? "Anonymous",
+                Content = message,
                 Timestamp = DateTimeOffset.UtcNow
             };
 

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Chat.API.Migrations
 {
-    [DbContext(typeof(ChatDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250830192308_addUserIdToMessages")]
     partial class addUserIdToMessages
     {

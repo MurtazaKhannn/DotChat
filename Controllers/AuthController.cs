@@ -15,8 +15,6 @@ public class AuthController : ControllerBase
         _signInManager = signInManager;
     }
 
-    // This endpoint initiates the Google login flow.
-    // The browser will be redirected to Google.
     [HttpGet("login")]
     public IActionResult Login(string returnUrl = "/")
     {
@@ -26,7 +24,6 @@ public class AuthController : ControllerBase
         return Challenge(properties, GoogleDefaults.AuthenticationScheme);
     }
 
-    // This endpoint logs the user out.
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
     {
@@ -34,17 +31,14 @@ public class AuthController : ControllerBase
         return Ok(new { message = "Logged out successfully." });
     }
 
-    // This endpoint allows the frontend to check if a user is currently logged in.
-    // It returns the user's name if they have a valid auth cookie.
     [HttpGet("me")]
     public IActionResult GetCurrentUser()
     {
         if (User.Identity.IsAuthenticated)
         {
-            // Return the user's name (or any other claim you want)
             return Ok(new { name = User.Identity.Name });
         }
-        // If not authenticated, return 401 Unauthorized
+
         return Unauthorized();
     }
 }
